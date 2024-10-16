@@ -10,7 +10,7 @@ public class StudentController : Controller
         DateOfBirth = DateTime.Now,
         FirstName = "Test",
         LastName = "Test",
-        GPA = 5
+        GPA = 4
     };
 
     public IActionResult GetStudents()
