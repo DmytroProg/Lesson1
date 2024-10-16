@@ -18,4 +18,24 @@ public class StudentController : Controller
         //ViewData["Student"] = _student;
         return View(await _studentService.GetStudents());
     }
+
+    public IActionResult AddStudent()
+    {
+        return View();
+    }
+
+    public IActionResult ReturnBack()
+    {
+        return RedirectToAction(nameof(GetStudents));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddStudent(Student student)
+    {
+        // validation
+
+        await _studentService.AddStudent(student);
+
+        return RedirectToAction(nameof(GetStudents));
+    }
 }

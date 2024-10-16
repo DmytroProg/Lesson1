@@ -2,17 +2,14 @@
 
     @* @($"{ViewBag.Student.FirstName} {ViewBag.Student.LastName}") *@
     @* @((ViewData["Student"] as Student)?.FirstName) *@
-    
+
+<a asp-action="AddStudent" class="btn btn-primary">Add student</a>
+
     <ul style="font-size: 2em">
     @foreach(var student in Model)
     {
-        @if (student.GPA < 3)
-        {
-            <li class="text-danger">@($"{student.FirstName} {student.LastName} {student.GPA}")</li>
-        }
-        else
-        {
-            <li>@($"{student.FirstName} {student.LastName} {student.GPA}")</li>
-        }
+        <li class="@(student.GPA < 3 ? "text-danger" : "")">
+            @($"{student.FirstName} {student.LastName} {student.GPA}")
+        </li>
     }
     </ul>

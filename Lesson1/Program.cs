@@ -11,8 +11,8 @@ namespace Lesson1
             //builder.Services.AddTransient - every time
             //builder.Services.AddScoped    - every request
             //builder.Services.AddSingleton - always one
-
-            builder.Services.AddTransient<IStudentService, StudentService>();
+            
+            builder.Services.AddSingleton<IStudentService, StudentService>();
 
             builder.Services.AddControllersWithViews();
 
@@ -33,7 +33,7 @@ namespace Lesson1
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(pattern: "{controller=Home}/{action=Privacy}/{id?}", name: "default");
+            app.MapControllerRoute(pattern: "{controller=Student}/{action=GetStudents}/{id?}", name: "default");
 
             app.Run();
         }
