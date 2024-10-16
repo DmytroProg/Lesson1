@@ -5,18 +5,17 @@ namespace Lesson1.Controllers;
 
 public class StudentController : Controller
 {
-    private Student _student = new Student
-    {
-        DateOfBirth = DateTime.Now,
-        FirstName = "Test",
-        LastName = "Test",
-        GPA = 4
-    };
+    private readonly IStudentService _studentService;
 
-    public IActionResult GetStudents()
+    public StudentController(IStudentService studentService)
+    {
+        _studentService = studentService;
+    }
+
+    public async Task<IActionResult> GetStudents()
     {
         //ViewBag.Student = _student;
         //ViewData["Student"] = _student;
-        return View(_student);
+        return View(await _studentService.GetStudents());
     }
 }

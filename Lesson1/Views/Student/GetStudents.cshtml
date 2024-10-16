@@ -1,7 +1,18 @@
-﻿@model Student
+﻿@model IEnumerable<Student>
 
-<h1 class="text-center text-primary">
     @* @($"{ViewBag.Student.FirstName} {ViewBag.Student.LastName}") *@
     @* @((ViewData["Student"] as Student)?.FirstName) *@
-    @Model.FirstName
-</h1>
+    
+    <ul style="font-size: 2em">
+    @foreach(var student in Model)
+    {
+        @if (student.GPA < 3)
+        {
+            <li class="text-danger">@($"{student.FirstName} {student.LastName} {student.GPA}")</li>
+        }
+        else
+        {
+            <li>@($"{student.FirstName} {student.LastName} {student.GPA}")</li>
+        }
+    }
+    </ul>

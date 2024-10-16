@@ -7,6 +7,13 @@ namespace Lesson1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            //builder.Services.AddTransient - every time
+            //builder.Services.AddScoped    - every request
+            //builder.Services.AddSingleton - always one
+
+            builder.Services.AddTransient<IStudentService, StudentService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
