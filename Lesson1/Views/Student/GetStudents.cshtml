@@ -9,7 +9,14 @@
     @foreach(var student in Model)
     {
         <li class="@(student.GPA < 3 ? "text-danger" : "")">
+
             @($"{student.FirstName} {student.LastName} {student.GPA}")
+
+            <form asp-action="DeleteStudent" asp-route-id="@student.Id" method="post">
+                @* <input value="@student.Id" type="hidden" name="id"/> *@
+                <input type="submit" value="Delete" class="btn btn-outline-danger"/>
+            </form>
+            <a asp-action="UpdateStudent" asp-route-id="@student.Id">Edit</a>
         </li>
     }
     </ul>

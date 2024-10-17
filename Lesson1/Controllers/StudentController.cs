@@ -19,6 +19,7 @@ public class StudentController : Controller
         return View(await _studentService.GetStudents());
     }
 
+
     public IActionResult AddStudent()
     {
         return View();
@@ -35,6 +36,28 @@ public class StudentController : Controller
         // validation
 
         await _studentService.AddStudent(student);
+
+        return RedirectToAction(nameof(GetStudents));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteStudent(int id)
+    {
+        await _studentService.DeleteStudent(id);
+
+        return RedirectToAction(nameof(GetStudents));
+    }
+
+    public async Task<IActionResult> UpdateStudent(int id)
+    {
+        var student = (await _studentService.GetStudents()).First(x => x.Id == id);
+        return View(student);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateStudent(Student student)
+    {
+        await _studentService.UpdateStudent(student);
 
         return RedirectToAction(nameof(GetStudents));
     }

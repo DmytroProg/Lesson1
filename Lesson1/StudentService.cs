@@ -9,9 +9,9 @@ public class StudentService : IStudentService
     public StudentService()
     {
         _students = new List<Student>();
-        _students.Add(new Student() { FirstName = "John", LastName = "Jhonson", GPA = 4 });
-        _students.Add(new Student() { FirstName = "Jack", LastName = "Jackson", GPA = 2 });
-        _students.Add(new Student() { FirstName = "Mary", LastName = "Maryson", GPA = 5 });
+        _students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Jhonson", GPA = 4 });
+        _students.Add(new Student() { Id = 2, FirstName = "Jack", LastName = "Jackson", GPA = 2 });
+        _students.Add(new Student() { Id = 3, FirstName = "Mary", LastName = "Maryson", GPA = 5 });
     }
 
     public async Task<Student> AddStudent(Student student)

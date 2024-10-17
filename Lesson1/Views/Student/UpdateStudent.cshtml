@@ -1,0 +1,21 @@
+﻿@model Student
+
+<h1>Edit student</h1>
+
+<form method="post" asp-action="UpdateStudent">
+    <label>First Name</label>
+    <input asp-for="FirstName" type="text" />
+
+    <label>LastName</label>
+    <input asp-for="LastName" type="text" />
+
+    <label>Date Of Birth</label>
+    <input asp-for="DateOfBirth" type="date" />
+
+    <label>GPA</label>
+    <input asp-for="GPA" type="number" />
+
+    <input type="submit" value="Edit" class="btn btn-success" />
+</form>
+
+<a asp-action="ReturnBack">Return to students</a>
